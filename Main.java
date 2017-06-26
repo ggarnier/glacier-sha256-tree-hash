@@ -23,6 +23,10 @@ static final int ONE_MB = 1024 * 1024;
         }
 
         File inputFile = new File(args[0]);
+        if (!inputFile.canRead()) {
+          System.err.printf("Can't read file %s\n", args[0]);
+          System.exit(-1);
+        }
         try {
 
             byte[] treeHash = computeSHA256TreeHash(inputFile);
