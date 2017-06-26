@@ -13,7 +13,7 @@ static final int ONE_MB = 1024 * 1024;
      * File
      *
      * @param args
-     *            args[0]: a file to compute a SHA-256 tree hash for
+     *            args: files to compute SHA-256 tree hashes for
      */
     public static void main(String[] args) {
 
@@ -22,15 +22,21 @@ static final int ONE_MB = 1024 * 1024;
             System.exit(-1);
         }
 
-        File inputFile = new File(args[0]);
+        for (int i = 0; i < args.length; i++) {
+            processFile(args[i]);
+        }
+    }
+
+    public static void processFile(String filename) {
+        File inputFile = new File(filename);
         if (!inputFile.canRead()) {
-          System.err.printf("Can't read file %s\n", args[0]);
-          System.exit(-1);
+            System.err.printf("Can't read file %s\n", filename);
+            return;
         }
         try {
 
             byte[] treeHash = computeSHA256TreeHash(inputFile);
-            System.out.printf("SHA-256 Tree Hash = %s\n", toHex(treeHash));
+            System.out.printf("SHA-256 Tree Hash = %s  %s\n", toHex(treeHash), filename);
 
         } catch (IOException ioe) {
             System.err.format("Exception when reading from file %s: %s", inputFile,
