@@ -14,8 +14,8 @@ Or pull the image from Docker Hub:
 docker pull ggarnier/glacier-sha256-tree-hash:latest
 ```
 
-To run checksum for a local file:
+To run it for local files:
 
 ```
-docker run -it --rm -v `pwd`:/app ggarnier/glacier-sha256-tree-hash:latest java Main <filename>
+docker run -it --rm -v `pwd`:/app ggarnier/glacier-sha256-tree-hash:latest <file1> <file2> ...
 ```
