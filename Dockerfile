@@ -1,10 +1,8 @@
 FROM openjdk:8-alpine
 
-ENV APP_DIR /src
+RUN mkdir -p /src /app
+WORKDIR /app
+COPY Main.java /src/Main.java
 
-RUN mkdir -p $APP_DIR
-WORKDIR $APP_DIR
-COPY Main.java Main.java
-
-RUN javac Main.java
-ENTRYPOINT ["java", "Main"]
+RUN javac /src/Main.java -d /src/
+ENTRYPOINT ["java", "-classpath", "/src/", "Main"]
