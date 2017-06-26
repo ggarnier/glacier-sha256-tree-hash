@@ -8,8 +8,14 @@ To build your own image:
 docker build -t glacier-sha256-tree-hash:latest .
 ```
 
+Or pull the image from Docker Hub:
+
+```
+docker pull ggarnier/glacier-sha256-tree-hash:latest
+```
+
 To run checksum for a local file:
 
 ```
-docker run -it --rm -v `pwd`:/app glacier-sha256-tree-hash:latest java Main <filename>
+docker run -it --rm -v `pwd`:/app ggarnier/glacier-sha256-tree-hash:latest java Main <filename>
 ```
