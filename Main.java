@@ -36,7 +36,7 @@ static final int ONE_MB = 1024 * 1024;
         try {
 
             byte[] treeHash = computeSHA256TreeHash(inputFile);
-            System.out.printf("SHA-256 Tree Hash = %s  %s\n", toHex(treeHash), filename);
+            System.out.printf("%s  %s\n", toHex(treeHash), filename);
 
         } catch (IOException ioe) {
             System.err.format("Exception when reading from file %s: %s", inputFile,
